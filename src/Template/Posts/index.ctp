@@ -39,6 +39,13 @@
 <?php
     echo $this->Html->Link('Login', ['controller' => 'users', 'action' => 'login']);
 ?>
-    
+<br>
+<?php
+    echo $this->Html->Link('Logout', ['controller' => 'users', 'action' => 'logout']);
+?>
+<br>
+<?php
+    echo $this->Html->Link('Adicionar Usuário', ['controller' => 'users', 'action' => 'adicionar']);
+?>
 
 

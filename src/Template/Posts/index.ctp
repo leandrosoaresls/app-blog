@@ -22,6 +22,9 @@
                 <?php
                 echo $this->Html->Link('Editar', ['controller' => 'posts', 'action' => 'editar', $post['id']]);
                 ?>
+                <?php
+                echo $this->Form->postLink('Apagar', ['controller' => 'posts', 'action' => 'apagar', $post['id']], ['confirm' => 'Tem certeza que deseja apagar o post '.$post['titulo'].'?']);
+                ?>
             </td>
         </tr>
         <?php endforeach; ?>        

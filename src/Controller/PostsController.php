@@ -49,6 +49,20 @@ class PostsController extends AppController {
         $this->set('msg', $msg);
     }
 
+    public function apagar($id) {
+        $postsTable = TableRegistry::get('Posts');
+
+        $post = $postsTable->get($id);
+
+        if ($postsTable->delete($post)) {
+            $msg = "Post removido com sucesso!";
+        } else {
+            $msg = "Erro ao remover o post";
+        }
+
+        $this->redirect('Posts/index');
+    }
+
 
     
 }

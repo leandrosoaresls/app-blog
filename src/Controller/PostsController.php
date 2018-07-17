@@ -42,11 +42,13 @@ class PostsController extends AppController {
 
         if ($postsTable->save($post)) {
             $msg = "Post criado com sucesso";
+            $this->Flash->set($msg,['element' => 'success']);
         } else {
             $msg = "Erro ao criar post";
+            $this->Flash->set($msg,['element' => 'error']);
         }
 
-        $this->set('msg', $msg);
+        $this->redirect('Posts/index');
     }
 
     public function apagar($id) {
@@ -56,8 +58,10 @@ class PostsController extends AppController {
 
         if ($postsTable->delete($post)) {
             $msg = "Post removido com sucesso!";
+            $this->Flash->set($msg, ['element'  => 'error']);
         } else {
             $msg = "Erro ao remover o post";
+            $this->Flash->set($msg);
         }
 
         $this->redirect('Posts/index');

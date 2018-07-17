@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use Cake\ORM\TableRegistry;
+use Cake\Event\Event;
 
 class UsersController extends AppController {
 
@@ -30,11 +31,17 @@ class UsersController extends AppController {
     }
 
     public function login() {
-        $userTable = TableRegistry::get('Users');
+        if($this->request->is('post')) {
+            $user = $this->Auth->identify();
 
-        $user = $userTable->newEntity();
+            if($user) {
+                $this ->Auth->setUser($user);
+                return $this->reditect($this->Auth->redirectUrl());
+            } else {
+                $this->Flash->set('Usuario ou senha invalidos', ['element' => 'error']);
+            }
 
-        $this->set('user', $user);
+        }
 
     }
 

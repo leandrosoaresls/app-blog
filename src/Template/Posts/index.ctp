@@ -34,5 +34,11 @@
 
 <?php
     echo $this->Html->Link('Novo Post', ['controller' => 'posts', 'action' => 'novo']);
-
 ?>
+<br>
+<?php
+    echo $this->Html->Link('Login', ['controller' => 'users', 'action' => 'login']);
+?>
+    
+
+
